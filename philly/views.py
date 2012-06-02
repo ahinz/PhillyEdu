@@ -70,6 +70,28 @@ def list_schools(request):
             "citywide": [school2dict(z) for z in c],
             "selective": [school2dict(z) for z in s] }
 
+def str2bool(s):
+    return s == "true"
+
+@api_call()
+def search_schools(request):
+    req = request.REQUEST
+    
+    missing = req["absences"]    # Max
+    late = req["tardies"]        # Max
+    behavior = req["discipline"] # 0=> None, 1 => Recent, 2 => 'Past'
+
+    pssa_math = req["pssa_math"] # 2=> Advanced 1=> Proficient, 3=> Near Proficient, 4=> Not Proficient, -1=> None
+    pssa_reading = req["pssa_reading"] # 2=> Advanced 1=> Proficient, 3=> Near Proficient, 4=> Not Proficient, -1=> None
+
+    national_rank = req["national_rank"] #0=> Ignore, otherwise percentile
+
+    grades = req["grades"] #0=> As & Bs,  1=> 1 c in minor subj, 2=> 1 c in major subj, 3=> 2+ c's, 4=> Failed
+
+    return list_schools(request)
+
+    
+
 def index(request):
     return render_to_response('search.html',
                           {"API_URL": settings.API_URL, "title": "Search"},
