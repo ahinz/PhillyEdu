@@ -10,4 +10,6 @@ urlpatterns = patterns(
     # url(r'^schools/', include('schools.foo.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+
+    url(r'^list$', 'philly.views.list_schools'),
 )
