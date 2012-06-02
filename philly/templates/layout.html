@@ -1,0 +1,51 @@
+<html>
+<head>
+	<title>PhillyEdu - </title>
+	<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+	<link href="{{ STATIC_URL }}bootstrap/css/bootstrap.css" rel="stylesheet">
+	<style type="text/css">
+	  body {
+		padding-top: 60px;
+		padding-bottom: 40px;
+	  }
+	  .sidebar-nav {
+		padding: 30px;
+	  }
+	  .hero-unit {
+	  	padding: 40px;
+	  }
+	</style>
+	<link href="{{ STATIC_URL }}bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+	  <div class="navbar-inner">
+		<div class="container-fluid">
+		  <a class="brand" href="#">PhillyEdu</a>
+		  <div class="nav-collapse">
+			<ul class="nav">
+			  <li class="active"><a href="/index.html">Search</a></li>
+			  <li><a href="schools.html">Schools</a></li>
+			</ul>
+		  </div><!--/.nav-collapse -->
+		</div>
+	  </div>
+	</div>
+
+	<div class="container-fluid">
+
+		{% block content %}
+
+		{% endblock content %}
+
+	  <hr>
+
+	  <footer>
+		<p>&copy; Company 2012</p>
+	  </footer>
+
+	</div><!--/.fluid-container-->
+</body>
+</html>

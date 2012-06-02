@@ -4,6 +4,8 @@ import json
 from django.views.decorators.http import require_http_methods
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseServerError
+from django.template import RequestContext
+from django.shortcuts import render_to_response
 
 
 from philly.models import School
@@ -66,3 +68,8 @@ def list_schools(request):
     return {"neighborhood": [school2dict(z) for z in n],
             "citywide": [school2dict(z) for z in c],
             "selective": [school2dict(z) for z in s] }
+
+def index(request):
+    return render_to_response('search.html',
+                          {},
+                          context_instance=RequestContext(request))

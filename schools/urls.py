@@ -11,5 +11,7 @@ urlpatterns = patterns(
 
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^list$', 'philly.views.list_schools'),
+    url(r'^api/list$', 'philly.views.list_schools'),
+
+    url(r'^$', 'philly.views.index'),
 )

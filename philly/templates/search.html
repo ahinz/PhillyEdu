@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row-fluid">
+<div class="span3">
+  <div class="well sidebar-nav">
+	<h2>Info</h2>
+	<form>
+	  <label for="email">Email</label>
+	  <input type="text" id="email" name="email" />
+	  <label for="math">Math Grade</label>
+	  <input type="text" id="math" name="math" />
+	  <label for="science">Science Grade</label>
+	  <input type="text" id="science" name="science" />
+	  <label for="english">English Grade</label>
+	  <input type="text" id="english" name="english" />
+	  <label for="history">Social Studies Grade</label>
+	  <input type="text" id="history" name="history" />
+	  <label for="pssa">PSSA</label>
+	  <input type="text" id="pssa" name="pssa" />
+	  <label for="absences">Absences</label>
+	  <select name="absences" id="absences">
+		<option>0-5</option>
+		<option>6-10</option>
+		<option>10+</option>
+	  </select>
+	  <label>Suspensions</label>
+	  Yes <input type="radio" value="Yes" name="suspension" />
+	  No <input type="radio" value="No" name="suspension" /><br />
+	  <input type="submit" value="Search" class="btn btn-success" />
+	</form>
+  </div><!--/.well -->
+</div><!--/span-->
+<div class="span9">
+  <div class="hero-unit">
+	<p id="results">
+	</p>
+  </div>
+  </div><!--/row-->
+</div><!--/span-->
+</div><!--/row-->
+{% endblock content %}
