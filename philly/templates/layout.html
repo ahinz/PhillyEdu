@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>PhillyEdu - </title>
+	<title>PhillyEdu - {{ title }}</title>
 	<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
 	<link href="{{ STATIC_URL }}bootstrap/css/bootstrap.css" rel="stylesheet">
 	<style type="text/css">
@@ -47,5 +47,9 @@
 	  </footer>
 
 	</div><!--/.fluid-container-->
+
+{% block page_js %}
+
+{% endblock page_js %}
 </body>
 </html>

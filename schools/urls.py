@@ -14,4 +14,6 @@ urlpatterns = patterns(
     url(r'^api/list$', 'philly.views.list_schools'),
 
     url(r'^$', 'philly.views.index'),
+
+    url(r'^schools$', 'philly.views.schools'),
 )

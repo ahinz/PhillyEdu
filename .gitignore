@@ -1,1 +1,5 @@
 *.pyc
+.DS_Store
+env/
+local_settings.py
+*.sqlite

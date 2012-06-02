@@ -6,6 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseServerError
 from django.template import RequestContext
 from django.shortcuts import render_to_response
+from django.conf import settings
 
 
 from philly.models import School
@@ -71,5 +72,10 @@ def list_schools(request):
 
 def index(request):
     return render_to_response('search.html',
-                          {},
+                          {"API_URL": settings.API_URL, "title": "Search"},
                           context_instance=RequestContext(request))
+
+def schools(request):
+    return rendter_to_response('schools.html',
+                            {"title": "Schools"},
+                            context_instance=RequestContext(request))

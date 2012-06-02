@@ -1,5 +1,29 @@
 {% extends "layout.html" %}
 
+{% block page_js %}
+<script type="text/javascript">
+	String.prototype.capitalize = function() {
+	    return this.charAt(0).toUpperCase() + this.slice(1);
+	}
+	$(document).ready(function() {
+		$.getJSON('{{ API_URL }}/api/list', function(response) {
+
+
+			for (var type in response) {
+			   var schools = response[type];
+			   console.log(type);
+			   $('#results').append('<h2>'+type.capitalize()+'</h2>');
+			   for (var i in schools) {
+			      $('#results').append(schools[i].name+'<br />');
+			   }
+			}
+
+
+		});
+	});
+</script>
+{% endblock page_js %}
+
 {% block content %}
 <div class="row-fluid">
 <div class="span3">
