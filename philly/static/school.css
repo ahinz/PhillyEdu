@@ -59,7 +59,7 @@
 
 .bar_good {
     float:left;
-    background-color: green;
+    background-color: #C5F7C3; /*green;*/
     width: 22%;
     height: 100%;
 }
@@ -76,13 +76,14 @@
 }
 
 .bar_med1 {
-    background-color: yellow;
+    background-color: #F7F7C3;
 }
 
 .bar_med2 {
-    background-color: orange;
+    background-color: #F7D6C3;
 }
 
 .bar_bad {
-    background-color: red;
+    background-color: #000000;
+    color: #eee;
 }

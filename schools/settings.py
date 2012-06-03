@@ -1,6 +1,6 @@
 # Django settings for schools project.
 
-API_URL = 'http://smooth-dusk-7754.herokuapp.com'
+API_URL = 'http://www.myhighschoolguide.com'
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
