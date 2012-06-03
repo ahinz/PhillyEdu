@@ -51,8 +51,8 @@ class SchoolAddress(models.Model):
     name = models.CharField(max_length=255)
     locationnumber = models.CharField(max_length=20)
 
-    adresss_street  = models.CharField(max_length=255)
-    adresss_zip  = models.CharField(max_length=255)
+    address_street  = models.CharField(max_length=255)
+    address_zip  = models.CharField(max_length=255)
 
     phone = models.CharField(max_length=200)
     image = models.TextField()
