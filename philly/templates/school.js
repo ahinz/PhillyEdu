@@ -32,6 +32,11 @@ function render_page(data) {
     $("#partnerships").text(data["partnerships"]);
     $("#extracurriculars").text(data["extracurriculars"]);
 
+    if (parseInt(data["locationnumber"]) > 0) {
+        $("#moreinfo").html('<a href="https://webapps.philasd.org/school_profile/view/' + data["locationnumber"] + '">Philadelphia School District Info</a>');
+    } else {
+        $("#moreinfo").html('No information yet');
+    }
 }
 
 function do_search(id) {
