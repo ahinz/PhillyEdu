@@ -25,7 +25,7 @@ class School(models.Model):
             if  self.grading_style_c_time == 1:
                 time = "in all classes"
             elif self.grading_style_c_time == 0:
-                time = "on the most recent report card"
+                time = "on the last report card"
 
             if (self.grading_style_c_num == 0):
                 return "Only A's and B's"
