@@ -106,7 +106,7 @@ def search_schools(request):
     if behavior == "1": # Got a recent dicipline, only neighborhood schools
         schools = schools.filter(school_type=0) # Only neighborhood schools
     elif behavior == "2":
-        schools = schools.filter(Q(behavior_time=1) | Q(behavior_time=-1))
+        schools = schools.filter(Q(behavior_time=0) | Q(behavior_time=-1))
 
     if pssa_math == "1":
         schools = schools.filter(Q(pssa_math=1)|Q(pssa_math=0)|Q(pssa_math=3))
