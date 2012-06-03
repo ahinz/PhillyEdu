@@ -29,28 +29,54 @@
 <div class="span3">
   <div class="well sidebar-nav">
 	<h2>Info</h2>
-	<form>
+	<form action="/api/search" method="GET">
 	  <label for="email">Email</label>
 	  <input type="text" id="email" name="email" />
-	  <label for="math">Math Grade</label>
-	  <input type="text" id="math" name="math" />
-	  <label for="science">Science Grade</label>
-	  <input type="text" id="science" name="science" />
-	  <label for="english">English Grade</label>
-	  <input type="text" id="english" name="english" />
-	  <label for="history">Social Studies Grade</label>
-	  <input type="text" id="history" name="history" />
-	  <label for="pssa">PSSA</label>
-	  <input type="text" id="pssa" name="pssa" />
+          <label for="grades">Grades</label>
+          <select name="grades">
+            <option value="0">All As and Bs</option>
+            <option value="1">At most 1 C in a minor subject</option>
+            <option value="2">At most 1 C in a major subject</option>
+            <option value="3">2 or more Cs</option>
+            <option value="4">D or F in any class</option>
+          </select>
+	  <label for="pssa">PSSA Math</label>
+          <select name="pssa_math">
+            <option value="-1">Not Taken</option>
+            <option value="2">Advanced</option>
+            <option value="1">Proficient</option>
+            <option value="3">Near Proficient</option>
+            <option value="4">Less than Near Proficient</option>
+          </select>
+	  <label for="pssa">PSSA Reading</label>
+          <select name="pssa_reading">
+            <option value="-1">Not Taken</option>
+            <option value="2">Advanced</option>
+            <option value="1">Proficient</option>
+            <option value="3">Near Proficient</option>
+            <option value="4">Less than Near Proficient</option>
+          </select>
 	  <label for="absences">Absences</label>
 	  <select name="absences" id="absences">
-		<option>0-5</option>
-		<option>6-10</option>
-		<option>10+</option>
+	    <option value="0">0</option>
+	    <option value="1">1-10</option>
+	    <option value="11">11+</option>
 	  </select>
-	  <label>Suspensions</label>
-	  Yes <input type="radio" value="Yes" name="suspension" />
-	  No <input type="radio" value="No" name="suspension" /><br />
+	  <label for="tardies">Tardies</label>
+	  <select name="tardies" id="tardies">
+	    <option value="0">0</option>
+	    <option value="1">1-5</option>
+	    <option value="6">6+</option>
+	  </select>
+          <label for="discipline">Discipline</label>
+          <select name="discipline" id="discipline">
+            <option value="0">None</option>
+            <option value="1">Incident Reported Last Year</option>
+            <option value="2">Previous Incidents</option>
+            <option value="1">Previous Incidents and Reported Last year</option>
+          </select>
+          <label form="nat">National Percentile</label>
+          <input name="national_rank" value="0">
 	  <input type="submit" value="Search" class="btn btn-success" />
 	</form>
   </div><!--/.well -->
