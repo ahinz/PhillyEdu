@@ -114,7 +114,7 @@ def search_schools(request):
         schools = schools.filter(school_type=0) # Only neighborhood schools
 
     if national_rank > 0:
-        schools = schools.filter(Q(national_norm__lte=national_rank)|Q(national_norm=0)))
+        schools = schools.filter(Q(national_norm__lte=national_rank)|Q(national_norm=0))
 
     if grades == "0":
         #TODO: But we do need to filter on time
