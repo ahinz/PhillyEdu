@@ -156,6 +156,14 @@ def search_js(request):
                               context_instance=RequestContext(request),
                               mimetype="application/javascript")
 
+def school_info(request, school_id):
+    school = School.objects.get(locationnumber=school_id)
+
+    return render_to_response('school.html',
+                              {"API_URL": settings.API_URL,
+                               "school": school },
+                              context_instance=RequestContext(request))
+
 def index(request):
     return render_to_response('search.html',
                           {"API_URL": settings.API_URL, "title": "Search"},

@@ -15,6 +15,7 @@ urlpatterns = patterns(
     url(r'^api/search$', 'philly.views.search_schools'),
 
     url(r'^$', 'philly.views.index'),
+    url(r'^school/(?P<school_id>\d+)$', 'philly.views.school_info'),
 
     url(r'^schools$', 'philly.views.schools'),
 
