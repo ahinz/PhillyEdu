@@ -78,7 +78,7 @@ def str2bool(s):
 
 @api_call()
 def school_detail(request,school_id):
-    school = School.objects.get(locationnumber=school_id)
+    school = School.objects.get(pk=school_id)
     
     return school2dict(school)
     
@@ -173,7 +173,7 @@ def js(file_name,request):
                               mimetype="application/javascript")
 
 def school_info(request, school_id):
-    school = School.objects.get(locationnumber=school_id)
+    school = School.objects.get(pk=school_id)
 
     return render_to_response('school.html',
                               {"API_URL": settings.API_URL,
@@ -185,7 +185,17 @@ def index(request):
                           {"API_URL": settings.API_URL, "title": "Search"},
                           context_instance=RequestContext(request))
 
+def getSchoolsByType(t):
+    return School.objects.filter(school_type=t).order_by('name')
+
 def schools(request):
-    return rendter_to_response('schools.html',
-                            {"title": "Schools"},
+    n = getSchoolsByType(0)
+    c = getSchoolsByType(1)
+    s = getSchoolsByType(2)
+
+    return render_to_response('schools.html',
+                            { "title": "Schools",
+                              "neighborhood": n,
+                              "citywide": c,
+                              "selective": s},
                             context_instance=RequestContext(request))

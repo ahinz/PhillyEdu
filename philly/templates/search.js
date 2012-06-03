@@ -16,7 +16,7 @@ function table_row(ar,params) {
     }
 
 
-    return '<a href="/school/' + ar['locationnumber'] + '?' + href + '"><div class="box" id="'+ ar['id'] +'"><div class="school-name">' + ar['name'].capitalize() + "</div><div class=\"grad-rate\">Graduation Rate<h2>"+  grad_rate  +"</h2></div></div></a>"; 
+    return '<a href="/school/' + ar['id'] + '?' + href + '"><div class="box" id="'+ ar['id'] +'"><div class="school-name">' + ar['name'].capitalize() + "</div><div class=\"grad-rate\">Graduation Rate<h2>"+  grad_rate  +"</h2></div></div></a>"; 
 }
 
 function generate_section(schoolType, section, params) {
@@ -64,6 +64,23 @@ function do_search() {
 }
 
 function markSchools(sections) {
+
+    var params = get_form_params()
+    set_history(params);
+
+    var href = []
+    for(var key in params) {
+        href.push(key + "=" + params[key]);
+    }
+    href = href.join("&");
+
+    $('.column a').map(function(index, jq){
+        var ahref = jq.href;
+        ahref = ahref.split('?')[0];
+        jq.href = ahref + '?' + href;
+    });
+
+
     $('.box').removeClass('highlight');
     for(var schoolType in sections) {
         $('#section_'+schoolType).html(sections[schoolType].length);
