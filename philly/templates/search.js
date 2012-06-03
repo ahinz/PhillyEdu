@@ -42,6 +42,8 @@ function get_form_params() {
 
 function do_search() {
     var params = get_form_params()
+    set_history(params);
+
     var url = '{{ API_URL }}/api/search'
     $.ajax({
         url: url,
@@ -74,13 +76,36 @@ function render_table(data, params) {
     $('#neighborhood').append(generate_section("neighborhood", data["neighborhood"], params));
 }    
 
+function set_history(params) {
+    var qstr = "";
+    for(var key in params) {
+        qstr += key + "=" + params[key] + "&";
+    }
+    
+    var url = window.location.origin + window.location.pathname + "?" + qstr;
+    history.replaceState(null, null, url);
+}
+
 $(function() {
+    var search = {}
+
+    $.map(window.location.search.substring(1).split("&"), function(v) {
+        var vv = v.split("=")
+        search[vv[0]] = vv[1];
+    });
+
+    $("#searchform :input").map(function(idx,jq) {
+        if (search[jq.name] != undefined) {
+            $(jq).val(search[jq.name]);
+        }
+    });
+
     $("#searchform :input").map(function(idx,jq) {
         $(jq).change(do_search);
     });
 
-
     $("#run_search").click(do_search);
     get_all();
+    do_search();
 
 });
