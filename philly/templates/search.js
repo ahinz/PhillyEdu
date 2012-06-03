@@ -48,9 +48,20 @@ function do_search() {
         dataType: 'json',
         data: params,
         success: function(resp) {
-            render_table(resp, params);
+            // render_table(resp, params);
+            markSchools(resp);
         }
     });
+}
+
+function markSchools(sections) {
+    $('.box').removeClass('highlight');
+    for(var schoolType in sections) {
+
+        for(var i=0; i < sections[schoolType].length; i++) {
+            $('#'+sections[schoolType][i].id).addClass('highlight');
+        }
+    }
 }
 
 function get_all() {
@@ -60,9 +71,12 @@ function get_all() {
         dataType: 'json',
         success: function(resp) {
             render_table(resp, null);
+            $('.box').addClass('highlight');
         }
     });
 }
+
+
 
 function render_table(data, params) {
     $('#citywide').empty();
@@ -82,5 +96,4 @@ $(function() {
 
     $("#run_search").click(do_search);
     get_all();
-
 });
