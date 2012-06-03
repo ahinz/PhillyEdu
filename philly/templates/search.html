@@ -8,10 +8,8 @@
 <div class="row-fluid">
 <div class="span3">
   <div class="well sidebar-nav">
-	<h2>Info</h2>
+	<h2>Student Info</h2>
 	<form action="/api/search" method="GET" id="searchform">
-	  <label for="email">Email</label>
-	  <input type="text" id="email" name="email" />
           <label for="grades">Grades</label>
           <select name="grades">
             <option value="0">All As and Bs</option>
@@ -57,16 +55,79 @@
           </select>
           <label form="nat">National Percentile</label>
           <input name="national_rank" value="0">
-	  <input type="submit" value="Search" class="btn btn-success" />
 	</form>
         <button id="run_search">Search</button>
   </div><!--/.well -->
 </div><!--/span-->
+  <style>
+
+  .box {
+    width: 175px;
+    height: 175px;
+    background: rgb(238,238,238);
+    /*background: rgb(250,250,250);*/
+    
+    /*background: rgb(244,234,213);*/
+    /*background: #E0D5BC;*/
+    /*padding: 10px;*/
+    border-radius: 10px;
+    text-align: center;
+    /*float: left;*/
+    margin: 0px 15px 15px 0px;
+    /*background: rgb(210,210,210);*/
+    /*border: 1px solid rgb(210,210,210);*/
+  }
+
+  .school-name {
+    height: 75px;
+    font-size: 15px;
+    line-height: 25px;
+    padding: 10px;
+  }
+
+  .grad-rate {
+    text-align: center;
+    margin-top: 5px;
+    background: rgb(210,210,210);
+    /*background: #45515F;*/
+    /*background: #BDB4A0;*/
+    height: 60px;
+    border-radius: 10px;
+    color: black;
+    width: 120px;
+    padding-top: 4px;
+    margin-left: 28px;
+  }
+
+  .column {
+    width: 250px;
+    float: left;
+  }
+
+
+  </style>
 <div class="span9">
-  <div class="hero-unit">
+
+<div id="results"></div>
+
+<div id="citywide" class="column"></div>
+
+<div id="selective" class="column"></div>
+
+<div id="neighborhood" class="column"></div>
+
+
+<!--   <div class="box">
+    <div class="school-name">Some Name of School</div>
+    <div style="background: red">Graduation Rate
+    <div class="grad-rate">80%</div></div>
+  </div> -->
+
+
+<!--   <div class="hero-unit">
 	<p id="results">
 	</p>
-  </div>
+  </div> -->
   </div><!--/row-->
 </div><!--/span-->
 </div><!--/row-->
