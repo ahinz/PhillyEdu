@@ -43,6 +43,8 @@ class School(models.Model):
     extracurriculars = models.TextField(default="")
     sports = models.TextField(default="")
 
+    grad_rate = models.IntegerField(default=0)
+
     def __unicode__(self):
         return u'%s (%s / %s)' % (self.name, self.locationnumber, self.get_school_type_display().split(" ")[0])
 
