@@ -17,4 +17,6 @@ urlpatterns = patterns(
     url(r'^$', 'philly.views.index'),
 
     url(r'^schools$', 'philly.views.schools'),
+
+    url(r'^js/search.js$','philly.views.search_js'),
 )

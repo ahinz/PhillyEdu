@@ -122,15 +122,19 @@ def search_schools(request):
     elif grades == "1":
         # Filter where (# of c's allowed is >= 1 and minor is allowed) OR
         #              (# of c's allowed is >= 0 and major is allowed)
-        schools = schools.filter(Q(grading_style_c_num__gte=1,grading_style_c=1) | Q(grading_style_c_num__gte=0,grading_style_c=2))
+        schools = schools.filter(Q(grading_style_c=0) |
+                                 Q(grading_style_c_num__gte=1,grading_style_c=1) | 
+                                 Q(grading_style_c_num__gte=0,grading_style_c=2))
     elif grades == "2":
         # Filter where number of c's allowed is greater than or equal to 1 and C's are allowed in major
-        # subjects
-        schools = schools.filter(grading_style_c_num__gte=1,grading_style_c=2)
+        # subjects OR Cs allowed
+        schools = schools.filter(Q(grading_style_c=0) | 
+                                 Q(grading_style_c_num__gte=1,grading_style_c=2))
     elif grades == "3": # 2+c's, so, 
         # TODO: We are ignoring time in this
         # TODO: We should probably split this into major/minor
-        schools = schools.filter(grading_style_c_num__gte=2)
+        schools = schools.filter(Q(grading_style_c=0) |
+                                 Q(grading_style_c_num__gte=2))
     elif grades == "4":
         schools = schools.filter(school_type=0) # Only neighborhood schools
 
@@ -146,8 +150,11 @@ def search_schools(request):
             "citywide": [school2dict(z) for z in c],
             "selective": [school2dict(z) for z in s] }
 
-
-    
+def search_js(request):
+    return render_to_response('search.js',
+                              {"API_URL": settings.API_URL, "title": "Search"},
+                              context_instance=RequestContext(request),
+                              mimetype="application/javascript")
 
 def index(request):
     return render_to_response('search.html',
