@@ -60,7 +60,8 @@ def school2dict(s):
              "partnerships": s.partnerships,
              "extracurriculars": s.extracurriculars,
              "sports": s.sports,
-             "grades": s.grade_descr()}
+             "grades": s.grade_descr(),
+             "grad_rate": s.grad_rate}
 
 @api_call()
 def list_schools(request):

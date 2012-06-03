@@ -5,15 +5,22 @@ String.prototype.capitalize = function() {
 function table_row(ar,params) { 
     var href = []
     for(var key in params) {
-        href.push(key + "=" + params[key])
+        href.push(key + "=" + params[key]);
     }
-    href = href.join("&") 
+    href = href.join("&");
 
-    return '<a href="/school/' + ar['locationnumber'] + '?' + href + '"><div class="box" id="'+ ar['id'] +'"><div class="school-name">' + ar['name'].capitalize() + "</div><div class=\"grad-rate\">Graduation Rate<h2>80%</h2></div></div></a>"; 
+    if (ar['grad_rate']==0) {
+        grad_rate = "NA";
+    }else {
+        grad_rate = ar['grad_rate']+"%";
+    }
+
+
+    return '<a href="/school/' + ar['locationnumber'] + '?' + href + '"><div class="box" id="'+ ar['id'] +'"><div class="school-name">' + ar['name'].capitalize() + "</div><div class=\"grad-rate\">Graduation Rate<h2>"+  grad_rate  +"</h2></div></div></a>"; 
 }
 
 function generate_section(schoolType, section, params) {
-    var tbl = '<br /><div style="span8">' + "<h2>" + schoolType.capitalize() + " (" + section.length + ")</h2>\n";
+    var tbl = '<br /><div style="span8">' + "<h2>" + schoolType.capitalize() + " (<span id=\"section_"+ schoolType +"\">" + section.length + "/</span>" + section.length + ")</h2>\n";
     $.map(section, function(val,idx) {
         tbl += table_row(val, params);
     });
@@ -50,9 +57,20 @@ function do_search() {
         dataType: 'json',
         data: params,
         success: function(resp) {
-            render_table(resp, params);
+            // render_table(resp, params);
+            markSchools(resp);
         }
     });
+}
+
+function markSchools(sections) {
+    $('.box').removeClass('highlight');
+    for(var schoolType in sections) {
+        $('#section_'+schoolType).html(sections[schoolType].length+"/");
+        for(var i=0; i < sections[schoolType].length; i++) {
+            $('#'+sections[schoolType][i].id).addClass('highlight');
+        }
+    }
 }
 
 function get_all() {
@@ -62,9 +80,13 @@ function get_all() {
         dataType: 'json',
         success: function(resp) {
             render_table(resp, null);
+            $('.box').addClass('highlight');
+            do_search();
         }
     });
 }
+
+
 
 function render_table(data, params) {
     $('#citywide').empty();
@@ -106,6 +128,6 @@ $(function() {
 
     $("#run_search").click(do_search);
     get_all();
-    do_search();
+    // do_search();
 
 });
