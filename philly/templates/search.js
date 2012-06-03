@@ -20,7 +20,7 @@ function table_row(ar,params) {
 }
 
 function generate_section(schoolType, section, params) {
-    var tbl = '<br /><div style="text-align: center;">' + "<h2>" + schoolType.capitalize() + "</h2><div style=\"font-size: 20px; color: black;\"><span id=\"section_"+ schoolType +"\">" + section.length + "/</span>" + section.length + "</div><br />\n";
+    var tbl = '<br /><div style="text-align: center;">' + "<h2>" + schoolType.capitalize() + "</h2><div style=\"font-size: 20px; color: black;\"><span class=\"matches\" id=\"section_"+ schoolType +"\">" + section.length + "</span>/" + section.length + "</div><br />\n";
     $.map(section, function(val,idx) {
         tbl += table_row(val, params);
     });
@@ -66,7 +66,7 @@ function do_search() {
 function markSchools(sections) {
     $('.box').removeClass('highlight');
     for(var schoolType in sections) {
-        $('#section_'+schoolType).html(sections[schoolType].length+"/");
+        $('#section_'+schoolType).html(sections[schoolType].length);
         for(var i=0; i < sections[schoolType].length; i++) {
             $('#'+sections[schoolType][i].id).addClass('highlight');
         }
