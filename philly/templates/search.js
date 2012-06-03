@@ -20,7 +20,7 @@ function table_row(ar,params) {
 }
 
 function generate_section(schoolType, section, params) {
-    var tbl = '<br /><div style="span8">' + "<h2>" + schoolType.capitalize() + " (<span id=\"section_"+ schoolType +"\">" + section.length + "/</span>" + section.length + ")</h2>\n";
+    var tbl = '<br /><div style="text-align: center;">' + "<h2>" + schoolType.capitalize() + "</h2><div style=\"font-size: 20px; color: black;\">(<span id=\"section_"+ schoolType +"\">" + section.length + "/</span>" + section.length + ")</div><br />\n";
     $.map(section, function(val,idx) {
         tbl += table_row(val, params);
     });
