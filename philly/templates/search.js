@@ -9,16 +9,15 @@ function table_row(ar,params) {
     }
     href = href.join("&") 
 
-    return '<tr><td><a href="/school/' + ar['locationnumber'] + '?' + href + '">' + ar['name'].capitalize() + "</a></td></tr>"; 
+    return '<a href="/school/' + ar['locationnumber'] + '?' + href + '"><div class="box" id="'+ ar['id'] +'"><div class="school-name">' + ar['name'].capitalize() + "</div><div class=\"grad-rate\">Graduation Rate<h2>80%</h2></div></div></a>"; 
 }
 
 function generate_section(schoolType, section, params) {
-    var tbl = '<div style="span8">' + "<h2>" + schoolType.capitalize() + "</h2>\n";
-    tbl += '<table class="table-bordered table-striped" style="width:100%">';
+    var tbl = '<br /><div style="span8">' + "<h2>" + schoolType.capitalize() + " (" + section.length + ")</h2>\n";
     $.map(section, function(val,idx) {
         tbl += table_row(val, params);
     });
-    return tbl + "</table></div>\n"
+    return tbl + "</div>\n"
 }
 
 function generate_table(sections, params) {
@@ -54,9 +53,25 @@ function do_search() {
     });
 }
 
+function get_all() {
+    var url = '{{ API_URL }}/api/list'
+    $.ajax({
+        url: url,
+        dataType: 'json',
+        success: function(resp) {
+            render_table(resp, null);
+        }
+    });
+}
+
 function render_table(data, params) {
-    $('#results').empty();
-    $('#results').append(generate_table(data, params));
+    $('#citywide').empty();
+    $('#selective').empty();
+    $('#neighborhood').empty();
+
+    $('#citywide').append(generate_section("citywide", data["citywide"], params));
+    $('#selective').append(generate_section("selective", data["selective"], params));
+    $('#neighborhood').append(generate_section("neighborhood", data["neighborhood"], params));
 }    
 
 $(function() {
@@ -66,6 +81,6 @@ $(function() {
 
 
     $("#run_search").click(do_search);
-    do_search();
+    get_all();
 
 });
