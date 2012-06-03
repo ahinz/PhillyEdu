@@ -60,6 +60,11 @@ function render_table(data, params) {
 }    
 
 $(function() {
+    $("#searchform :input").map(function(idx,jq) {
+        $(jq).change(do_search);
+    });
+
+
     $("#run_search").click(do_search);
     do_search();
 

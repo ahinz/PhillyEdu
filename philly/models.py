@@ -46,5 +46,14 @@ class School(models.Model):
     def __unicode__(self):
         return u'%s (%s / %s)' % (self.name, self.locationnumber, self.get_school_type_display().split(" ")[0])
 
+class SchoolAddress(models.Model):
 
-# Create your models here.
+    name = models.CharField(max_length=255)
+    locationnumber = models.CharField(max_length=20)
+
+    adresss_street  = models.CharField(max_length=255)
+    adresss_zip  = models.CharField(max_length=255)
+
+    phone = models.CharField(max_length=200)
+    image = models.TextField()
+    
