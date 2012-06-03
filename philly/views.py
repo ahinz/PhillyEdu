@@ -59,7 +59,8 @@ def school2dict(s):
              "highlights": s.highlights,
              "partnerships": s.partnerships,
              "extracurriculars": s.extracurriculars,
-             "sports": s.sports }
+             "sports": s.sports,
+             "grades": s.grade_descr()}
 
 @api_call()
 def list_schools(request):
@@ -73,6 +74,13 @@ def list_schools(request):
 
 def str2bool(s):
     return s == "true"
+
+@api_call()
+def school_detail(request,school_id):
+    school = School.objects.get(locationnumber=school_id)
+    
+    return school2dict(school)
+    
 
 @api_call()
 def search_schools(request):
@@ -151,7 +159,14 @@ def search_schools(request):
             "selective": [school2dict(z) for z in s] }
 
 def search_js(request):
-    return render_to_response('search.js',
+    return js('search.js',request)
+
+def school_js(request):
+    return js('school.js',request)
+
+
+def js(file_name,request):
+    return render_to_response(file_name,
                               {"API_URL": settings.API_URL, "title": "Search"},
                               context_instance=RequestContext(request),
                               mimetype="application/javascript")

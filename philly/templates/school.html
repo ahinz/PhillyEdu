@@ -1,7 +1,12 @@
 {% extends "layout.html" %}
 
+{% block page_css %}
+<link href="{{ STATIC_URL }}/school.css" rel="stylesheet">
+{% endblock page_css %}
+
+
 {% block page_js %}
-<script src="/js/search.js"></script>
+<script src="/js/school.js"></script>
 {% endblock page_js %}
 
 {% block content %}
@@ -9,30 +14,154 @@
   <img src="http://media.treehugger.com/assets/images/2011/10/shigeru-ban-paper-tube-schools-china.jpg" width="100%">
 </div>
 
+<div class="row-fluid" style="margin-bottom: 10px">
+  <div class="span3"></div>
+  <div class="span6">
+    <h1><span id="school_name"></span></h1>
+  </div>
+</div>
+
 <div class="row-fluid">
   <div class="span3"></div>
   <div class="span2">
-    <div class="hero-unit">
-      Grades
+    <div class="info_square">
+      <div class="header">
+        <h3>Grades</h3>
+      </div>
+      <div class="info">
+        <div class="lbox esquare" style="width:70%;">
+          <div id="grade_info">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="span2">
-    <div class="hero-unit">
-      Grades
+    <div class="info_square">
+      <div class="header">
+        <h3>PSSA - Math</h3>
+      </div>
+      <div class="bar arrow">
+        <div id="bar_math_2"></div>
+        <div id="bar_math_1"></div>
+        <div id="bar_math_3"></div>
+        <div id="bar_math_0"></div>
+      </div>
+      <div class="bar">
+        <div class="bar_good">Adv</div>
+        <div class="bar_med1">Prof</div>
+        <div class="bar_med2">Near</div>
+        <div class="bar_bad">N/A</div>
+      </div>
+      <div class="bar arrow">
+        <div id="bar_math_student_2"></div>
+        <div id="bar_math_student_1"></div>
+        <div id="bar_math_student_3"></div>
+        <div id="bar_math_student_0"></div>
+      </div>
+    </div>
+  </div>
+  <div class="span2">
+    <div class="info_square">
+      <div class="header">
+        <h3>PSSA - Reading</h3>
+      </div>
+      <div class="bar arrow">
+        <div id="bar_reading_2"></div>
+        <div id="bar_reading_1"></div>
+        <div id="bar_reading_3"></div>
+        <div id="bar_reading_0"></div>
+      </div>
+      <div class="bar">
+        <div class="bar_good">Adv</div>
+        <div class="bar_med1">Prof</div>
+        <div class="bar_med2">Near</div>
+        <div class="bar_bad">N/A</div>
+      </div>
+      <div class="bar arrow">
+        <div id="bar_reading_student_2"></div>
+        <div id="bar_reading_student_1"></div>
+        <div id="bar_reading_student_3"></div>
+        <div id="bar_reading_student_0"></div>
+      </div>
     </div>
   </div>
 </div>
+<div style="height: 10px"></div>
 <div class="row-fluid">
   <div class="span3"></div>
   <div class="span2">
-    <div class="hero-unit">
-      Grades
+    <div class="info_square">
+      <div class="header">
+        <h3>Attendance</h3>
+      </div>
+      <div class="info">
+        <div class="lbox esquare">
+          <div><h5>Missing</h5></div>
+          <div id="missing">1</div>
+        </div>
+        <div class="lbox esquare">
+          <div><h5>Late</h5></div>
+          <div id="late">1</div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="span2">
-    <div class="hero-unit">
-      Grades
+    <div class="info_square">
+      <div class="header">
+        <h3>Behavior</h3>
+      </div>
+      <div class="info">
+        <div class="lbox esquare" style="width: 80%" id="behavior">
+        </div>
+      </div>
     </div>
+  </div>
+  <div class="span2">
+    <div class="info_square">
+      <div class="header">
+        <h3>National Norms</h3>
+      </div>
+      <div class="info big" style="position: relative">
+        <div class="lbox esquare" style="width:50%;">
+          <div id="norm" style="margin-top: 10px">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row-fluid inforow">
+  <div class="span1"></div>  <div class="span8">
+    <div class="content_header">Mission</div>
+    <div id="mission"></div>
+  </div>
+</div>
+<div class="row-fluid inforow">
+  <div class="span1"></div>
+  <div class="span8">
+    <div class="content_header">Points of Pride</div>
+    <div id="pride"></div>
+  </div>
+</div>
+<div class="row-fluid inforow">
+  <div class="span1"></div>  <div class="span8">
+    <div class="content_header">Courses and Program Highlights</div>
+    <div id="highlights"></div>
+  </div>
+</div>
+<div class="row-fluid inforow">
+  <div class="span1"></div>  <div class="span8">
+    <div class="content_header">Courses and Program Highlights</div>
+    <div id="partnerships"></div>
+  </div>
+</div>
+<div class="row-fluid inforow">
+  <div class="span1"></div>  <div class="span8">
+    <div class="content_header">Courses and Program Highlights</div>
+    <div id="extracurriculars"></div>
   </div>
 </div>
 

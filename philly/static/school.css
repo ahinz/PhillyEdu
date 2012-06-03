@@ -1,0 +1,88 @@
+
+.info_square {
+    padding: 10px;
+    background-color: #EEE;
+    border-radius: 6px;
+    width: 100%; /*195px;*/
+    height: 100px;
+}
+
+.content_header {
+    font-size: large;
+    font-weight: bold;
+}
+
+.inforow {
+    padding: 5px;
+    margin: 5px;
+}
+
+.esquare {
+    background-color: #dfdfdf;
+    border-radius: 6px;
+    padding: 10px;
+    height: 45px;
+}
+
+
+.header {
+    width: 100%;
+    text-align: center;
+}
+
+.info {
+    width: 100%;
+    text-align: center;
+}
+
+.lbox {
+    display:inline-block;
+    width: 50px;
+    margin: 4px;
+}
+
+.info2 {
+    text-align: left;
+}
+
+.bar {
+    height: 20px;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.big {
+    font-face: bold;
+    font-size: large;
+}
+
+.bar_good {
+    float:left;
+    background-color: green;
+    width: 22%;
+    height: 100%;
+}
+
+.arrow div {
+    font-size: medium;
+}
+
+.bar div {
+    float: left;
+    width: 23%;
+    height: 100%;
+    text-align: center;
+}
+
+.bar_med1 {
+    background-color: yellow;
+}
+
+.bar_med2 {
+    background-color: orange;
+}
+
+.bar_bad {
+    background-color: red;
+}

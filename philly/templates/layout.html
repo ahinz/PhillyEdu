@@ -3,6 +3,8 @@
 	<title>PhillyEdu - {{ title }}</title>
 	<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
 	<link href="{{ STATIC_URL }}bootstrap/css/bootstrap.css" rel="stylesheet">
+        {% block page_css %}
+        {% endblock page_css %}
 	<style type="text/css">
 	  body {
 		padding-top: 60px;

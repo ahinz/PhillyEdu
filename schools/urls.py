@@ -13,6 +13,7 @@ urlpatterns = patterns(
 
     url(r'^api/list$', 'philly.views.list_schools'),
     url(r'^api/search$', 'philly.views.search_schools'),
+    url(r'^api/info/(?P<school_id>\d+)$', 'philly.views.school_detail'),
 
     url(r'^$', 'philly.views.index'),
     url(r'^school/(?P<school_id>\d+)$', 'philly.views.school_info'),
@@ -20,4 +21,5 @@ urlpatterns = patterns(
     url(r'^schools$', 'philly.views.schools'),
 
     url(r'^js/search.js$','philly.views.search_js'),
+    url(r'^js/school.js$','philly.views.school_js'),
 )

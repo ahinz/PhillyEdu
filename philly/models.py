@@ -12,6 +12,26 @@ class School(models.Model):
     grading_style_c_num = models.IntegerField(default=0)
     grading_style_c_time = models.IntegerField(default=0, choices=((1, "All Years"),(0, "Most Recent"),(-1,"Unspecified")))
 
+    def grade_descr(self):
+        if self.grading_style_c == 0:
+            return "Marks of A, B, or C"
+        else:
+            if self.grading_style_c == 1:
+                major = "minor subject"
+            else:
+                major = "major subject"
+
+            time = ""
+            if  self.grading_style_c_time == 1:
+                time = "in all classes"
+            elif self.grading_style_c_time == 0:
+                time = "on the most recent report card"
+
+            if (self.grading_style_c_num == 0):
+                return "Only A's and B's"
+            else:
+                return "At most %s C allowed in a %s %s" % (self.grading_style_c_num,major,time)
+
     pssa_reading = models.IntegerField(default=0, choices=((2, "Advanced"), (1,"Proficient"), (0, "Not Required"), (3, "Near Proficient")))
     pssa_math = models.IntegerField(default=0, choices=((2, "Advanced"), (1,"Proficient"), (0, "Not Required"), (3, "Near Proficient")))
     national_norm = models.IntegerField(default=0) # percentile
