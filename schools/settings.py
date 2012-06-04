@@ -1,5 +1,7 @@
 # Django settings for schools project.
 
+PREPEND_WWW = True
+
 API_URL = 'http://smooth-dusk-7754.herokuapp.com'
 
 DEBUG = True
